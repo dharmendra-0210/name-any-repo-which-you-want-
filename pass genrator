@@ -1,0 +1,26 @@
+import random
+import string
+
+def generate_password():
+    print("🔒 Robust Password Generator")
+    
+    # User se length poochna
+    try:
+        length = int(input("Enter the desired password length (minimum 6): "))
+        if length < 6:
+            print("Password should be at least 6 characters long. Setting to 6.")
+            length = 6
+    except ValueError:
+        print("Invalid input! Setting default length to 10.")
+        length = 10
+
+    # Saare characters ko mix karna
+    all_characters = string.ascii_letters + string.digits + string.punctuation
+    
+    # Randomly characters select karke password banana
+    password = "".join(random.choice(all_characters) for i in range(length))
+    
+    print(f"\n🔑 Your Secure Password: {password}")
+
+if __name__ == "__main__":
+    generate_password()
